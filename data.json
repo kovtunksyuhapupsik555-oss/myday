@@ -1,0 +1,83 @@
+{
+  "date": "2026-08-31",
+  "counters": {
+    "plan": {
+      "title": "ПЛАН",
+      "goal": 800000,
+      "current": 430000,
+      "unit": "₽",
+      "caption": "из цели за месяц"
+    },
+    "food": {
+      "title": "ЕДА",
+      "goal": 1800,
+      "current": 620,
+      "unit": "ккал",
+      "caption": "из дневной нормы"
+    },
+    "importantDate": {
+      "title": "ДАТА",
+      "label": "Вебинар потока",
+      "date": "2026-09-14",
+      "caption": "дней осталось"
+    }
+  },
+  "tasks": [
+    { "id": "t1", "day": "2026-08-31", "time": "09:30", "type": "study", "title": "Разбор урока по возражениям", "subtitle": "ЛАБС, поток 6 — досмотреть 20 мин", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t2", "day": "2026-08-31", "time": "11:00", "type": "clients", "title": "Zoom с Мариной К.", "subtitle": "тариф «Наставник» · 120 000 ₽", "contact": "@marina_k", "amount": 120000, "note": "сомневается в рассрочке", "clientId": "c1", "done": false },
+    { "id": "t3", "day": "2026-08-31", "time": "13:30", "type": "food", "title": "Обед", "subtitle": "по плану ~600 ккал", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t4", "day": "2026-08-31", "time": "14:00", "type": "clients", "title": "Zoom с Олегом Р.", "subtitle": "тариф «Старт» · 45 000 ₽", "contact": "+7 918 555-20-14", "amount": 45000, "note": "прислать счёт сразу после", "clientId": "c2", "done": false },
+    { "id": "t5", "day": "2026-08-31", "time": "16:30", "type": "personal", "title": "Забрать посылку с почты", "subtitle": "отделение до 19:00", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t6", "day": "2026-08-31", "time": "18:00", "type": "clients", "title": "Дожать Игоря С.", "subtitle": "бронь · 90 000 ₽", "contact": "@igor_s", "amount": 90000, "note": "обещал ответ сегодня", "clientId": "c3", "done": false },
+
+    { "id": "t7", "day": "2026-09-01", "time": "10:00", "type": "clients", "title": "Zoom с Татьяной Л.", "subtitle": "тариф «Наставник» · 120 000 ₽", "contact": "@tanya_l", "amount": 120000, "note": "первый созвон, тёплая", "done": false },
+    { "id": "t8", "day": "2026-09-01", "time": "12:00", "type": "study", "title": "Планёрка отдела продаж", "subtitle": "цифры недели, план", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t9", "day": "2026-09-01", "time": "15:00", "type": "clients", "title": "Zoom с Сергеем П.", "subtitle": "тариф «Старт» · 45 000 ₽", "contact": "@sergey_p", "amount": 45000, "note": "", "done": false },
+    { "id": "t10", "day": "2026-09-01", "time": "19:00", "type": "study", "title": "Эфир «Как выбрать нишу»", "subtitle": "прямой эфир, 200+ зрителей", "contact": null, "amount": null, "note": "быть за 15 мин", "done": false },
+
+    { "id": "t11", "day": "2026-09-02", "time": "11:00", "type": "clients", "title": "Zoom с Дарьей М.", "subtitle": "тариф «Старт» · 45 000 ₽", "contact": "@daria_m", "amount": 45000, "note": "", "done": false },
+    { "id": "t12", "day": "2026-09-02", "time": "13:00", "type": "personal", "title": "Врач", "subtitle": "запись на 13:00", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t13", "day": "2026-09-02", "time": "16:00", "type": "clients", "title": "Zoom с Артёмом К.", "subtitle": "бронь · 90 000 ₽", "contact": "@artem_k", "amount": 90000, "note": "дожать по счёту", "done": false },
+
+    { "id": "t14", "day": "2026-09-03", "time": "10:30", "type": "clients", "title": "Zoom с Ольгой В.", "subtitle": "тариф «Наставник» · 120 000 ₽", "contact": "@olga_v", "amount": 120000, "note": "", "done": false },
+    { "id": "t15", "day": "2026-09-03", "time": "14:00", "type": "study", "title": "Разбор возражений с командой", "subtitle": "тренировка скриптов", "contact": null, "amount": null, "note": "", "done": false },
+    { "id": "t16", "day": "2026-09-03", "time": "18:00", "type": "clients", "title": "Дожать Марину К.", "subtitle": "счёт · 120 000 ₽", "contact": "@marina_k", "amount": 120000, "note": "дедлайн оплаты", "clientId": "c1", "done": false },
+
+    { "id": "t17", "day": "2026-09-04", "time": "12:00", "type": "clients", "title": "Zoom с Игорем С.", "subtitle": "бронь · 90 000 ₽", "contact": "@igor_s", "amount": 90000, "note": "", "clientId": "c3", "done": false },
+    { "id": "t18", "day": "2026-09-04", "time": "17:00", "type": "study", "title": "Итоги недели, отчёт РОП", "subtitle": "план/факт, выводы", "contact": null, "amount": null, "note": "", "done": false },
+
+    { "id": "t19", "day": "2026-09-05", "time": "11:00", "type": "personal", "title": "Йога", "subtitle": "студия у дома", "contact": null, "amount": null, "note": "", "done": false }
+  ],
+  "clients": [
+    { "id": "c1", "name": "Марина К.", "status": "счёт", "nextTouch": "2026-08-31", "contact": "@marina_k", "crmUrl": "https://crm.example.com/leads/c1",
+      "zoomNotes": "Наставник в онлайн-школе по подготовке к ОГЭ. Хочет систему найма ассистентов. Бюджет есть, решение принимает с мужем.",
+      "history": "31.07 — заявка · 05.08 — Zoom, тариф «Наставник» 120 000 ₽ · 12.08 — выставлен счёт, ждём оплату. Дедлайн сегодня." },
+    { "id": "c2", "name": "Олег Р.", "status": "счёт", "nextTouch": "2026-08-31", "contact": "+7 918 555-20-14", "crmUrl": "https://crm.example.com/leads/c2",
+      "zoomNotes": "Запускает курс по Python в одиночку. Нужен трафик и упакованные продажи. Стартует с минимального тарифа.",
+      "history": "08.08 — Zoom, тариф «Старт» 45 000 ₽ · 09.08 — счёт отправлен. Обещал оплатить до конца недели." },
+    { "id": "c3", "name": "Игорь С.", "status": "бронь", "nextTouch": "2026-08-31", "contact": "@igor_s", "crmUrl": "https://crm.example.com/leads/c3",
+      "zoomNotes": "Эксперт по недвижимости, продаёт наставничество. Взял паузу подумать. Бронь места 90 000 ₽.",
+      "history": "24.08 — Zoom · 25.08 — забронировал место, внёс предоплату. Сегодня дедлайн решения." },
+    { "id": "c4", "name": "Татьяна Л.", "status": "после зума", "nextTouch": "2026-09-02", "contact": "@tanya_l", "crmUrl": "https://crm.example.com/leads/c4",
+      "zoomNotes": "Тёплая, пришла по рекомендации. Тариф «Наставник» 120 000 ₽. Думает над рассрочкой.",
+      "history": "01.09 — первый Zoom, всё понравилось. Договорились созвониться после того, как посчитает бюджет." },
+    { "id": "c5", "name": "Сергей П.", "status": "в работе", "nextTouch": "2026-09-01", "contact": "@sergey_p", "crmUrl": "https://crm.example.com/leads/c5",
+      "zoomNotes": "Холодный лид с вебинара. Интересуется тарифом «Старт». Пока много сомнений по результату.",
+      "history": "28.08 — оставил заявку · 30.08 — переписка, отправила кейсы. Назначен Zoom на 01.09 15:00." },
+    { "id": "c6", "name": "Дарья М.", "status": "после зума", "nextTouch": "2026-09-03", "contact": "@daria_m", "crmUrl": "https://crm.example.com/leads/c6",
+      "zoomNotes": "Тариф «Старт» 45 000 ₽. В целом за, но хочет стартовать со следующего месяца.",
+      "history": "02.09 — Zoom. Просила напомнить о себе через день и прислать программу." },
+    { "id": "c7", "name": "Артём К.", "status": "бронь", "nextTouch": "2026-09-02", "contact": "@artem_k", "crmUrl": "https://crm.example.com/leads/c7",
+      "zoomNotes": "Забронировал место, тариф «Наставник» 90 000 ₽ по спеццене. Ждёт счёт.",
+      "history": "02.09 — Zoom, забронировал. Нужно выставить счёт и дожать до оплаты." },
+    { "id": "c8", "name": "Ольга В.", "status": "купил", "nextTouch": null, "contact": "@olga_v", "crmUrl": "https://crm.example.com/leads/c8",
+      "zoomNotes": "Оплатила тариф «Наставник» 120 000 ₽. Передана куратору, старт обучения 08.09.",
+      "history": "20.08 — Zoom · 22.08 — оплата полностью. Сделка закрыта." },
+    { "id": "c9", "name": "Павел Н.", "status": "отмена", "nextTouch": null, "contact": "@pavel_n", "crmUrl": "https://crm.example.com/leads/c9",
+      "zoomNotes": "Не дошёл до оплаты, ушёл к конкурентам по цене. Можно вернуться через 2–3 месяца.",
+      "history": "15.08 — Zoom · 19.08 — отказ, выбрал другую школу." },
+    { "id": "c10", "name": "Анна В.", "status": "в работе", "nextTouch": "2026-09-04", "contact": "@anna_v", "crmUrl": "https://crm.example.com/leads/c10",
+      "zoomNotes": "Свежая заявка с рилса. Пока только познакомились в переписке.",
+      "history": "03.09 — заявка, ответила, задала квалифицирующие вопросы. Ждём ответ." }
+  ]
+}
