@@ -37,6 +37,19 @@
   }
 
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  button,a,.next,.task,.wday,.cli,.cal-cell,.chip,.bfilter,.nav button,.fab,.fab-add{
+    touch-action:manipulation;-webkit-user-select:none;user-select:none;
+  }
+  /* мгновенный отклик на нажатие */
+  .fab,.fab-add,.btn{transition:transform .09s ease, filter .09s ease}
+  .fab:active,.fab-add:active,.btn:active{transform:scale(.96);filter:brightness(.94)}
+  .next,.task,.wday,.cli{transition:transform .09s ease}
+  .next:active,.task:active,.wday:active,.cli:active{transform:scale(.985)}
+  .cal-cell:not(.out):active{transform:scale(.92)}
+  .chip,.bfilter,.cal-nav button{transition:transform .09s ease}
+  .chip:active,.bfilter:active,.cal-nav button:active{transform:scale(.93)}
+  .nav button:active{transform:scale(.9)}
+  .check:active{transform:scale(.85)}
   html,body{margin:0;padding:0}
   body{
     font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.45;
@@ -230,9 +243,9 @@
 
   .fab{
     position:fixed;left:15px;right:80px;bottom:calc(84px + env(safe-area-inset-bottom));
-    height:54px;border:0;border-radius:20px;background:#E24C82;color:#fff;
+    height:54px;border:0;border-radius:20px;background:#D45A85;color:#fff;
     font-family:var(--display);font-size:15px;font-weight:700;
-    box-shadow:0 16px 26px -6px rgba(226,76,130,.55), inset 0 2px 0 rgba(255,255,255,.3);
+    box-shadow:0 16px 26px -6px rgba(212,90,133,.5), inset 0 2px 0 rgba(255,255,255,.3);
     display:flex;align-items:center;justify-content:center;gap:8px;z-index:20;cursor:pointer;
   }
   .fab-add{
@@ -580,7 +593,25 @@ paintTitle('baseTitle', 'База');
 /* ---------- state ---------- */
 var D = null;
 
+/* ---------- доступ только для владельца ---------- */
+var OWNER_ID = 5156804687;
+function ownerOk(){
+  var h = location.hostname;
+  if (h === 'localhost' || h === '127.0.0.1' || h === '') return true; // локальная разработка
+  var u = TG && TG.initDataUnsafe && TG.initDataUnsafe.user;
+  return !!(u && String(u.id) === String(OWNER_ID));
+}
+function lockScreen(){
+  document.body.innerHTML =
+    '<div class="fatal">' +
+      '<div style="font-size:44px;line-height:1;margin-bottom:14px">🔒</div>' +
+      '<h2>Только для владельца</h2>' +
+      '<p>Это личное приложение. Откройте его из своего Telegram.</p>' +
+    '</div>';
+}
+
 function boot(){
+  if (!ownerOk()){ lockScreen(); return; }
   store.load().then(function(data){ D = data; render(); }).catch(function(err){
     $('app').innerHTML =
       '<div class="fatal"><h2>Не удалось загрузить данные</h2>' +
@@ -1116,7 +1147,7 @@ function attachLongPress(node, cb){
 }
 
 /* ---------- sheet ---------- */
-function sheet(html){ $('sheet').innerHTML = html; $('overlay').classList.add('open'); }
+function sheet(html){ haptic('light'); $('sheet').innerHTML = html; $('overlay').classList.add('open'); }
 function closeSheet(){ $('overlay').classList.remove('open'); }
 $('overlay').addEventListener('click', function(e){ if (e.target === this) closeSheet(); });
 
@@ -1124,6 +1155,7 @@ $('overlay').addEventListener('click', function(e){ if (e.target === this) close
 $('nav').addEventListener('click', function(e){
   var b = e.target.closest('button'); if (!b) return;
   var scr = b.dataset.scr;
+  haptic('light');
   Array.prototype.forEach.call(document.querySelectorAll('.nav button'), function(x){ x.classList.toggle('on', x === b); });
   Array.prototype.forEach.call(document.querySelectorAll('.screen'), function(s){ s.classList.toggle('active', s.id === 'screen-' + scr); });
   $('fab').classList.toggle('hidden', scr !== 'today');
