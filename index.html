@@ -7,10 +7,18 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Мой день</title>
+<!-- иконка на экране телефона: рассвет над морем, как в самом приложении -->
+<link rel="apple-touch-icon" href="/icons/icon-180.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icons/icon-512.png">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Мой день">
+<meta name="theme-color" content="#282344">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&display=swap">
 <style>
   :root{
     color-scheme: dark;
@@ -49,6 +57,7 @@
     --ease:cubic-bezier(.4,.08,.2,1);
 
     --display:"Zen Kaku Gothic New","Hiragino Sans",system-ui,sans-serif;
+    --title:"Cormorant Garamond","Zen Kaku Gothic New",Georgia,serif;
     --body:"Manrope","SF Pro Text",system-ui,-apple-system,sans-serif;
   }
 
@@ -71,6 +80,7 @@
     font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.45;
     -webkit-font-smoothing:antialiased;
     background:var(--sky-1);
+    padding-top:calc(14px + env(safe-area-inset-top));
     padding-bottom:calc(170px + env(safe-area-inset-bottom));
   }
   /* реальное фото + затемняющий градиент — фиксированный слой позади контента */
@@ -92,9 +102,9 @@
   .screen.active{display:block}
   #screen-today{padding-bottom:200px}
 
-  .hero{position:relative;margin:0 0 16px;padding:8px 0 6px;text-align:center}
+  .hero{position:relative;margin:0 0 16px;padding:2px 0 6px;text-align:center}
   .day-date{font-family:var(--display);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
-  .hero-title{font-family:var(--display);font-size:32px;font-weight:300;letter-spacing:.02em;margin:4px 0 0;color:var(--accent);text-shadow:0 0 26px var(--accent-glow)}
+  .hero-title{font-family:var(--title);font-size:42px;font-weight:600;letter-spacing:.02em;margin:4px 0 0;color:#FFB3C6;text-shadow:0 2px 12px rgba(0,0,0,.35), 0 0 26px var(--accent-glow)}
 
   /* glass card */
   .card{
@@ -119,7 +129,7 @@
   .next__jp b{font-weight:400;font-size:13.5px;color:var(--ink-soft);letter-spacing:.04em}
   .next__jp span{display:block;font-family:var(--body);font-size:11.5px;color:var(--ink-faint);margin-top:3px}
 
-  .counters{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:20px}
+  .counters{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:20px}
   .mini{margin-bottom:0}
   .mini .card__tab{font-size:9.5px;letter-spacing:.14em;padding:12px 12px 0}
   .mini .card__body{padding:6px 12px 13px}
@@ -158,7 +168,7 @@
 
   /* week */
   .week-hero{position:relative;text-align:center;margin:2px 0 16px;padding:8px 0 4px}
-  .week-hero .hero-title{font-size:28px}
+  .week-hero .hero-title{font-size:38px;font-weight:600}
   .wday{
     position:relative;display:flex;gap:12px;align-items:center;
     background:var(--panel);border:1px solid var(--stroke);border-radius:16px;
@@ -195,28 +205,28 @@
 
   /* calendar */
   .cal-hero{position:relative;text-align:center;margin:2px 0 12px;padding:8px 0 4px}
-  .cal-hero .hero-title{font-size:26px}
-  .cal-hero .day-date{text-transform:none;font-size:11px;letter-spacing:.02em;color:var(--ink-soft);font-weight:400;margin-top:5px}
+  .cal-hero .hero-title{font-size:36px;font-weight:600}
+  .cal-hero .day-date{text-transform:none;font-size:12px;letter-spacing:.02em;color:var(--ink-soft);font-weight:600;margin-top:5px}
   .cal-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:14px}
-  .cal-nav button{width:34px;height:34px;border:1px solid var(--stroke-2);background:var(--panel-2);border-radius:11px;font-family:var(--display);font-size:17px;font-weight:400;color:var(--ink);cursor:pointer;line-height:1;padding:0}
-  .cal-nav span{font-family:var(--display);font-weight:500;font-size:14px;text-transform:capitalize;min-width:128px;text-align:center;letter-spacing:.01em}
+  .cal-nav button{width:34px;height:34px;border:1px solid var(--stroke-2);background:var(--panel-2);border-radius:11px;font-family:var(--display);font-size:19px;font-weight:600;color:#FFF8FB;cursor:pointer;line-height:1;padding:0}
+  .cal-nav span{font-family:var(--display);font-weight:700;font-size:16px;color:#FFF8FB;text-transform:capitalize;min-width:128px;text-align:center;letter-spacing:.01em}
   .cal-dow{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin-bottom:6px}
-  .cal-dow span{text-align:center;font-family:var(--display);font-size:9.5px;font-weight:500;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase}
+  .cal-dow span{text-align:center;font-family:var(--display);font-size:11px;font-weight:700;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
   .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
   .cal-cell{
     aspect-ratio:1/1;border:1px solid var(--stroke);background:var(--panel-2);border-radius:10px;
     display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
-    font-family:var(--display);font-weight:300;font-size:13px;color:var(--ink);cursor:pointer;
+    font-family:var(--display);font-weight:600;font-size:15px;color:#FFF8FB;cursor:pointer;
   }
-  .cal-cell.out{opacity:.28;cursor:default}
-  .cal-cell.today{border-color:var(--accent);color:var(--accent)}
+  .cal-cell.out{opacity:.45;cursor:default}
+  .cal-cell.today{border-color:var(--accent);border-width:2px;color:var(--accent);font-weight:800}
   .cal-cell__dots{display:flex;gap:2px;height:5px}
   .cal-cell__dots i{width:3px;height:3px;border-radius:50%;background:var(--accent)}
   .cal-cell:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
   /* база */
   .base-hero{position:relative;text-align:center;margin:2px 0 14px;padding:8px 0 4px}
-  .base-hero .hero-title{font-size:26px}
+  .base-hero .hero-title{font-size:36px;font-weight:600}
   .base-hero .day-date{text-transform:none;font-size:11px;letter-spacing:.02em;color:var(--ink-soft);font-weight:400;margin-top:5px}
   .base-search{width:100%;height:44px;border:1px solid var(--stroke-2);border-radius:13px;background:rgba(14,9,20,.35);
     padding:0 14px;font-family:var(--body);font-size:15px;font-weight:500;color:var(--ink);margin-bottom:11px}
@@ -354,6 +364,15 @@
     .sheet{animation:none}
     *{transition:none!important}
   }
+  .dayrow.tapable{cursor:pointer;border-radius:12px;padding-right:6px}
+  .dayrow.tapable:active{background:rgba(255,255,255,.06)}
+  .dayrow__go{margin-left:auto;color:var(--accent,#FF8FA8);font-weight:700;padding-left:6px}
+  /* переключатель дня на главном экране */
+  .daysw{display:inline-flex;gap:4px;margin-top:10px;padding:3px;border-radius:14px;
+    background:rgba(52,44,74,.5);border:1px solid rgba(255,226,236,.14)}
+  .daysw__b{border:0;background:transparent;color:var(--ink-soft);font-family:var(--body);
+    font-size:13px;font-weight:700;padding:7px 16px;border-radius:11px;cursor:pointer}
+  .daysw__b.on{background:linear-gradient(180deg,var(--accent),var(--accent-deep));color:var(--accent-ink)}
 </style>
 </head>
 <body>
@@ -364,6 +383,10 @@
   <div class="hero">
     <div class="day-date" id="dayDate">—</div>
     <div class="hero-title" id="heroTitle" aria-label="Мой день"></div>
+    <div class="daysw" id="daySwitch">
+      <button class="daysw__b on" data-view="today">Сегодня</button>
+      <button class="daysw__b" data-view="tomorrow">Завтра</button>
+    </div>
   </div>
   <div class="card card--mint next" id="nextBlock" tabindex="0"></div>
   <div class="counters" id="counters"></div>
@@ -422,19 +445,42 @@ function haptic(k){ try { TG && TG.HapticFeedback && TG.HapticFeedback.impactOcc
 
 /* ---------- store (localStorage сейчас, под замену на API) ---------- */
 var STORE_KEY = 'myday_v4';
+
+/* Федя: приложение можно повесить иконкой на экран телефона. Вне телеграма подписи нет,
+   поэтому один раз открываем ссылку с ключом — он сохраняется и дальше подставляется сам. */
+var MY_KEY = (function(){
+  try {
+    var m = location.search.match(/[?&]k=([^&]+)/);
+    if (m){ localStorage.setItem('myday_key', decodeURIComponent(m[1])); }
+    return localStorage.getItem('myday_key') || '';
+  } catch(e){ return ''; }
+})();
 var store = {
+  /* Федя: данные берём с сервера — он их и наполняет из календаря и таблицы.
+     Запрос подписан телеграмом, чужому сервер данные не отдаст.
+     Локальные галочки «сделано» переносим на свежие данные, localStorage — запасной вариант. */
   load: function(){
     return new Promise(function(resolve, reject){
-      var raw = null;
-      try { raw = localStorage.getItem(STORE_KEY); } catch(e){}
-      if (raw){ try { return resolve(JSON.parse(raw)); } catch(e){} }
-      fetch('data.json?v=' + Date.now())
-        .then(function(r){ if(!r.ok) throw new Error('data.json ' + r.status); return r.json(); })
+      var local = null;
+      try { local = JSON.parse(localStorage.getItem(STORE_KEY)); } catch(e){}
+      var tgi = (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initData) || '';
+      fetch('data.json?v=' + Date.now() + '&init=' + encodeURIComponent(tgi) +
+            (MY_KEY ? '&k=' + encodeURIComponent(MY_KEY) : ''))
+        .then(function(r){
+          if (r.status === 403) throw new Error('Это личное приложение. Откройте его из своего Telegram');
+          if (!r.ok) throw new Error('data.json ' + r.status);
+          return r.json();
+        })
         .then(function(data){
+          if (local && local.tasks && data.tasks){
+            var was = {};
+            local.tasks.forEach(function(t){ if (t.done && t.key) was[t.key] = true; });
+            data.tasks.forEach(function(t){ if (t.key && was[t.key]) t.done = true; });
+          }
           try { localStorage.setItem(STORE_KEY, JSON.stringify(data)); } catch(e){}
           resolve(data);
         })
-        .catch(reject);
+        .catch(function(err){ if (local) resolve(local); else reject(err); });
     });
   },
   save: function(data){
@@ -527,6 +573,7 @@ var OWNER_ID = 5156804687;
 function ownerOk(){
   var h = location.hostname;
   if (h === 'localhost' || h === '127.0.0.1' || h === '') return true; // локальная разработка
+  if (MY_KEY) return true;                                             // иконка на экране телефона
   var u = TG && TG.initDataUnsafe && TG.initDataUnsafe.user;
   return !!(u && String(u.id) === String(OWNER_ID));
 }
@@ -535,13 +582,30 @@ function lockScreen(){
     '<div class="fatal">' +
       '<div style="font-size:44px;line-height:1;margin-bottom:14px">🔒</div>' +
       '<h2>Только для владельца</h2>' +
-      '<p>Это личное приложение. Откройте его из своего Telegram.</p>' +
+      '<p>Откройте из своего Telegram — или введите личный ключ, если приложение запущено с экрана телефона.</p>' +
+      '<input id="lockKey" placeholder="личный ключ" autocomplete="off" ' +
+        'style="width:100%;max-width:320px;height:46px;border-radius:14px;border:1px solid rgba(255,226,236,.25);' +
+        'background:rgba(52,44,74,.6);color:#F4EDF2;padding:0 14px;font-size:16px;margin-top:14px">' +
+      '<button id="lockGo" style="width:100%;max-width:320px;height:48px;margin-top:10px;border:0;border-radius:14px;' +
+        'background:linear-gradient(180deg,#FF8FA8,#F26D8E);color:#3a1622;font-size:15px;font-weight:700">Войти</button>' +
     '</div>';
+  var go = document.getElementById('lockGo');
+  if (go) go.onclick = function(){
+    var v = (document.getElementById('lockKey').value || '').trim();
+    if (!v) return;
+    try { localStorage.setItem('myday_key', v); } catch(e){}
+    location.href = '/?k=' + encodeURIComponent(v);
+  };
 }
 
 function boot(){
   if (!ownerOk()){ lockScreen(); return; }
   store.load().then(function(data){ D = data; render(); }).catch(function(err){
+    var msg = (err && err.message) || '';
+    if (msg.indexOf('403') >= 0 || msg.indexOf('личное приложение') >= 0){
+      lockScreen();               // просто нет ключа — даём его ввести, а не пугаем ошибкой
+      return;
+    }
     $('app').innerHTML =
       '<div class="fatal"><h2>Не удалось загрузить данные</h2>' +
       '<p>' + (err && err.message ? err.message : 'нет доступа к data.json') + '</p>' +
@@ -550,13 +614,20 @@ function boot(){
   });
 }
 
+/* Федя: Ксения просила с главного экрана быстро смотреть завтрашний день.
+   Переключатель меняет только ленту и дату — счётчики всегда про сегодня. */
+var viewDay = 'today';
+function viewKey(){ return viewDay === 'tomorrow' ? tomorrowKey() : todayKey(); }
+
 function render(){
-  var d = new Date(todayKey()+'T00:00:00');
+  var d = new Date(viewKey()+'T00:00:00');
   $('dayDate').textContent = d.toLocaleDateString('ru-RU', { weekday:'long', day:'numeric', month:'long' });
+  var sw = document.querySelectorAll('#daySwitch .daysw__b');
+  Array.prototype.forEach.call(sw, function(b){ b.classList.toggle('on', b.dataset.view === viewDay); });
   renderNext(); renderCounters(); renderFeed();
 }
 
-function todaysTasks(){ return D.tasks.filter(function(t){ return taskDay(t) === todayKey(); }); }
+function todaysTasks(){ return D.tasks.filter(function(t){ return taskDay(t) === viewKey(); }); }
 
 function renderNext(){
   var box = $('nextBlock');
@@ -564,7 +635,8 @@ function renderNext(){
     .sort(function(a,b){ return toMin(a.time) - toMin(b.time); });
   if (!pending.length){
     box.className = 'card card--mint next next--empty';
-    box.innerHTML = '<div class="card__tab">Дальше</div><div class="card__body">На сегодня всё 🌿' + jpBlock() + '</div>';
+    box.innerHTML = '<div class="card__tab">Дальше</div><div class="card__body">' +
+      (viewDay === 'tomorrow' ? 'Завтра пока пусто 🌿' : 'На сегодня всё 🌿') + jpBlock() + '</div>';
     box.onclick = null; return;
   }
   var t = pending[0];
@@ -577,6 +649,20 @@ function renderNext(){
       jpBlock() +
     '</div>';
   box.onclick = function(){ openTask(t.id); };
+}
+
+/* Федя: во всех счётчиках показываем не «из скольких», а сколько ещё осталось —
+   Ксения 04.09.2026: «показывай сразу остаток до плана», потом то же про еду и воду. */
+function planLeftLabel(plan){
+  var left = (plan.goal || 0) - (plan.current || 0);
+  if (left <= 0) return 'план закрыт 🎉';
+  return 'осталось ' + fmtMoney(left) + ' ' + plan.unit;
+}
+
+function leftLabel(c, doneText){
+  var left = (c.goal || 0) - (c.current || 0);
+  if (left <= 0) return doneText;
+  return 'осталось ' + left + ' ' + c.unit;
 }
 
 function renderCounters(){
@@ -594,10 +680,22 @@ function renderCounters(){
         '<div class="bar"><i style="width:' + p + '%"></i></div>' +
       '</div></div>';
   }
+  var water = c.water || { title:'ВОДА', current:0, goal:1500, unit:'мл' };
   wrap.innerHTML =
-    mini('card--pink', plan.title, fmtMoney(plan.current) + ' ' + plan.unit, 'из ' + fmtMoney(plan.goal) + ' ' + plan.unit, pct(plan.current, plan.goal)) +
-    mini('card--yellow', food.title, food.current + ' ' + food.unit, 'из ' + food.goal + ' ' + food.unit, pct(food.current, food.goal)) +
-    mini('card--lav', dt.title, left + (left === 1 ? ' день' : (left >= 2 && left <= 4 ? ' дня' : ' дней')), dt.label, datePct);
+    '<div id="planCard" style="cursor:pointer">' +
+    mini('card--pink', plan.title, fmtMoney(plan.current) + ' ' + plan.unit, planLeftLabel(plan), pct(plan.current, plan.goal)) +
+    '</div><div id="foodCard" style="cursor:pointer">' +
+    mini('card--yellow', food.title, food.current + ' ' + food.unit, leftLabel(food, 'норма набрана'), pct(food.current, food.goal)) +
+    '</div><div id="waterCard" style="cursor:pointer">' +
+    mini('card--mint', water.title, water.current + ' ' + water.unit, leftLabel(water, 'норма выпита 💧'), pct(water.current, water.goal)) +
+    '</div><div id="dateCard" style="cursor:pointer">' +
+    mini('card--lav', dt.title, left + (left === 1 ? ' день' : (left >= 2 && left <= 4 ? ' дня' : ' дней')), dt.label, datePct) +
+    '</div>';
+  // Федя: счётчики открываются — план и дата правятся, еда ведёт в дневник дня
+  if ($('planCard')) $('planCard').onclick = openPlanCard;
+  if ($('foodCard')) $('foodCard').onclick = openFoodDiary;
+  if ($('waterCard')) $('waterCard').onclick = openWaterCard;
+  if ($('dateCard')) $('dateCard').onclick = openDatesCard;
 }
 
 function renderFeed(){
@@ -675,9 +773,9 @@ function openDay(key){
   var list = dayTasks(key);
   var rows = list.length
     ? list.map(function(t){
-        return '<div class="dayrow"><span class="dayrow__dot '+t.type+'"></span>' +
+        return '<div class="dayrow tapable" data-task="'+t.id+'"><span class="dayrow__dot '+t.type+'"></span>' +
           (t.time ? '<span class="dayrow__time">'+t.time+'</span>' : '') +
-          '<span class="dayrow__title">'+t.title+(t.subtitle?' <span class="dayrow__sub">· '+t.subtitle+'</span>':'')+'</span></div>';
+          '<span class="dayrow__title">'+t.title+(t.subtitle?' <span class="dayrow__sub">· '+t.subtitle+'</span>':'')+'</span><span class="dayrow__go">›</span></div>';
       }).join('')
     : '<div class="muted">На этот день ничего не запланировано 🌿</div>';
   sheet(
@@ -686,7 +784,15 @@ function openDay(key){
     '<div class="daylist">'+rows+'</div>' +
     '<button class="btn ghost" id="mClose">Закрыть</button>'
   );
+  bindDayRows();
   $('mClose').onclick = closeSheet;
+}
+
+/* Федя: в списке дня каждое дело открывается — оттуда карточка, правка и комментарий */
+function bindDayRows(){
+  Array.prototype.forEach.call(document.querySelectorAll('.dayrow[data-task]'), function(r){
+    r.onclick = function(){ openTask(r.getAttribute('data-task')); };
+  });
 }
 
 /* ---------- calendar ---------- */
@@ -734,9 +840,9 @@ function openDayCal(key){
   var list = dayTasks(key);
   var plan = list.length
     ? list.map(function(t){
-        return '<div class="dayrow"><span class="dayrow__dot '+t.type+'"></span>' +
+        return '<div class="dayrow tapable" data-task="'+t.id+'"><span class="dayrow__dot '+t.type+'"></span>' +
           (t.time ? '<span class="dayrow__time">'+t.time+'</span>' : '') +
-          '<span class="dayrow__title">'+t.title+'</span></div>';
+          '<span class="dayrow__title">'+t.title+'</span><span class="dayrow__go">›</span></div>';
       }).join('')
     : '<div class="muted">Пусто 🌿</div>';
   var slots = freeSlots(key);
@@ -753,6 +859,7 @@ function openDayCal(key){
       '<button class="btn time-go" id="calTimeGo">Записать</button></div>' +
     '<button class="btn ghost" id="mClose">Закрыть</button>'
   );
+  bindDayRows();
   Array.prototype.forEach.call(document.querySelectorAll('#calSlots .chip'), function(b){
     b.onclick = function(){ calBook(key, b.dataset.slot); };
   });
@@ -839,6 +946,312 @@ function renderBaseList(){
   });
 }
 
+
+/* ---------- Федя: запись на сервер ----------
+   Кнопки отвечают мгновенно: закрываем лист и показываем результат сразу,
+   а данные подтягиваются следом. Подпись телеграма уходит в теле запроса —
+   в заголовке нельзя, кириллица в имени ломает fetch на маке. */
+var LAST_WRITE = 0;   // когда она последний раз что-то нажала
+
+function apiSend(path, body, okText, after){
+  haptic('light');
+  LAST_WRITE = Date.now();
+  if (okText) toast(okText);
+  closeSheet();
+  body.init = (TG && TG.initData) ? TG.initData : '';
+  if (MY_KEY) body.key = MY_KEY;
+  fetch(path, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) })
+    .then(function(r){ return r.json().then(function(j){ return { ok:r.ok, j:j }; }); })
+    .then(function(res){
+      if (!res.ok) throw new Error(res.j && res.j.error ? res.j.error : 'не вышло');
+      playPing('done');
+      if (after) after(res.j);
+      refreshSoon();
+    })
+    .catch(function(e){ playPing('error'); toast('Не сохранилось: ' + e.message); });
+}
+
+/* Дело, которое сервер только что создал, показываем сразу:
+   пересборка данных из календаря занимает несколько секунд, а ждать нечего. */
+function addTaskLocally(j){
+  if (!j || !j.task || !D || !D.tasks) return;
+  var t = j.task;
+  var already = false;
+  D.tasks.forEach(function(x){ if (x.gid && x.gid === t.gid) already = true; });
+  if (!already) D.tasks.push(t);
+  D.tasks.sort(function(a, b){
+    return (a.day + (a.time || '99:99')).localeCompare(b.day + (b.time || '99:99'));
+  });
+  render();
+  if ($('screen-week') && $('screen-week').classList.contains('active')) renderWeek();
+  if ($('screen-calendar') && $('screen-calendar').classList.contains('active')) renderCalendar();
+}
+
+function refreshSoon(){
+  [1500, 6000, 12000, 20000].forEach(function(ms){
+    setTimeout(function(){
+      store.load().then(function(d){
+        // данные собраны раньше, чем она нажала кнопку — они ещё не знают
+        // про её правку. Подменять ими экран нельзя, счётчик скакал назад.
+        if (d && d.built && d.built * 1000 < LAST_WRITE) return;
+        D = d; render();
+        if ($('screen-week') && $('screen-week').classList.contains('active')) renderWeek();
+        if ($('screen-calendar') && $('screen-calendar').classList.contains('active')) renderCalendar();
+      });
+    }, ms);
+  });
+}
+
+function isLink(v){ return !!v && /^https?:\/\//.test(String(v).trim()); }
+function openUrl(u){
+  u = String(u).trim();
+  if (inTelegram() && TG.openLink) return TG.openLink(u);
+  window.open(u, '_blank');
+}
+
+var REASONS = ['БАНКИ','Игнор','Не ЦА','Страх','Возражения','НЕТ денег','Счет не оплатила','Другое/тугое'];
+
+function askReason(c){
+  sheet(
+    '<h3>Отмена: ' + c.name + '</h3>' +
+    '<div class="sheet-sec">Причина</div>' +
+    REASONS.map(function(r, i){
+      return '<button class="btn" id="rz' + i + '" style="margin-top:8px">' + r + '</button>';
+    }).join('') +
+    '<button class="btn ghost" id="mClose">Не отменять</button>'
+  );
+  REASONS.forEach(function(r, i){
+    var b = $('rz' + i);
+    if (b) b.onclick = function(){ apiSend('api/client', { id:c.id, action:'cancel', reason:r }, 'Отмена записана'); };
+  });
+  $('mClose').onclick = closeSheet;
+}
+
+function askNote(kind, id, title){
+  sheet(
+    '<h3>Комментарий</h3>' +
+    '<div class="muted">' + (title || '') + '</div>' +
+    '<label>Что записать</label><input id="nText" placeholder="напр. выставила счёт, ждём до пятницы" autocomplete="off">' +
+    '<button class="btn" id="nSave">Сохранить</button>' +
+    '<button class="btn ghost" id="mClose">Отмена</button>'
+  );
+  setTimeout(function(){ var f = $('nText'); if (f) f.focus(); }, 60);
+  $('nSave').onclick = function(){
+    var v = ($('nText').value || '').trim();
+    if (!v) return toast('Пусто');
+    apiSend('api/note', { kind:kind, id:id, text:v }, 'Записал');
+  };
+  $('mClose').onclick = closeSheet;
+}
+
+function askMove(t){
+  var pick = { day: t.day || todayKey() };
+  sheet(
+    '<h3>Изменить дело</h3>' +
+    '<label>Название</label><input id="mvTitle" value="' + esc(t.title) + '">' +
+    '<label>День</label><div class="chips" id="mvDay">' + dayChipsHtml(pick.day) + '</div>' +
+    '<input id="mvDate" type="date" class="time-inp" value="' + pick.day + '">' +
+    '<label>Время</label><input id="mvTime" type="time" class="time-inp" value="' + (t.time || '') + '">' +
+    '<label>Ссылка на карточку</label><input id="mvLink" placeholder="вставь ссылку из CRM" value="' + (isLink(t.note) ? t.note : '') + '">' +
+    '<label>Заметка</label><input id="mvNote" placeholder="телефон, о чём говорили" value="' + esc(t.subtitle || '') + '">' +
+    '<button class="btn" id="mvSave">Сохранить</button>' +
+    '<button class="btn ghost" id="mClose">Отмена</button>'
+  );
+  Array.prototype.forEach.call(document.querySelectorAll('#mvDay .chip'), function(b){
+    b.onclick = function(){
+      pick.day = b.dataset.day; $('mvDate').value = pick.day;
+      Array.prototype.forEach.call(document.querySelectorAll('#mvDay .chip'), function(x){ x.classList.toggle('on', x === b); });
+    };
+  });
+  $('mvDate').addEventListener('change', function(){ if (this.value) pick.day = this.value; });
+  $('mvSave').onclick = function(){
+    apiSend('api/move', { gid:t.gid, day:pick.day, time:$('mvTime').value || '',
+                          title:($('mvTitle').value || '').trim(),
+                          link:($('mvLink').value || '').trim(),
+                          note:($('mvNote').value || '').trim() },
+            'Сохранила: ' + humanDay(pick.day));
+  };
+  $('mClose').onclick = closeSheet;
+}
+
+function dayChipsHtml(sel){
+  var out = '', base = new Date(todayKey() + 'T12:00:00');
+  var wd = ['вс','пн','вт','ср','чт','пт','сб'];
+  for (var i = 0; i < 8; i++){
+    var d = new Date(base); d.setDate(base.getDate() + i);
+    var key = ymd(d);
+    var label = i === 0 ? 'Сегодня' : (i === 1 ? 'Завтра' : wd[d.getDay()] + ' ' + d.getDate());
+    out += '<button class="chip' + (sel === key ? ' on' : '') + '" data-day="' + key + '">' + label + '</button>';
+  }
+  return out;
+}
+
+
+/* Федя: пересборка данных на сервере занимает несколько секунд — счётчик еды
+   обновляем сразу из ответа, чтобы цифра менялась на глазах, а не после перезапуска. */
+function applyFood(what, j){
+  if (!j || !D || !D.counters) return;
+  if (typeof j.total === 'number') D.counters.food.current = j.total;
+  D.meals = D.meals || { kcal:0, prot:0, list:[] };
+  D.meals.kcal = (typeof j.total === 'number') ? j.total : D.meals.kcal;
+  D.meals.prot = (typeof j.total_prot === 'number') ? j.total_prot : D.meals.prot;
+  D.meals.list = (D.meals.list || []).concat([{ what: what, kcal: j.kcal || 0, slot: '' }]);
+  store.save(D);
+  render();
+}
+
+
+/* Федя: вода считается так же просто, как еда — одним тапом по стакану.
+   Счётчик обновляется сразу из ответа сервера, без ожидания пересборки. */
+function openWaterCard(){
+  var w = (D.counters && D.counters.water) || { current:0, goal:1500 };
+  var left = Math.max(0, (w.goal || 1500) - (w.current || 0));
+  var list = (D.water && D.water.list) || [];
+  var rows = list.length
+    ? list.slice().reverse().map(function(x){
+        return '<div class="dayrow"><span class="dayrow__time">' + (x.at || '') + '</span>' +
+               '<span class="dayrow__title">' + (x.ml > 0 ? '+' : '') + x.ml + ' мл</span></div>';
+      }).join('')
+    : '<div class="muted">Сегодня пока не отмечала</div>';
+  sheet(
+    '<h3>Вода за сегодня</h3>' +
+    '<div class="muted">' + (w.current || 0) + ' из ' + (w.goal || 1500) + ' мл' +
+      (left ? ' · осталось ' + left : ' · норма выпита 💚') + '</div>' +
+    '<div class="chips" style="margin-top:10px">' +
+      '<button class="chip" data-ml="200">стакан 200</button>' +
+      '<button class="chip" data-ml="300">кружка 300</button>' +
+      '<button class="chip" data-ml="500">бутылка 500</button>' +
+      '<button class="chip" data-ml="-200">убрать 200</button>' +
+    '</div>' +
+    '<div class="daylist" style="margin-top:12px">' + rows + '</div>' +
+    '<button class="btn ghost" id="mClose">Закрыть</button>'
+  );
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ml]'), function(b){
+    b.onclick = function(){
+      var ml = parseInt(b.getAttribute('data-ml'), 10);
+      apiSend('api/water', { ml: ml }, ml > 0 ? '+' + ml + ' мл' : ml + ' мл',
+        function(j){ applyWater(ml, j); });
+    };
+  });
+  $('mClose').onclick = closeSheet;
+}
+
+function applyWater(ml, j){
+  if (!D || !D.counters) return;
+  D.counters.water = D.counters.water || { title:'ВОДА', goal:1500, unit:'мл', current:0 };
+  if (j && typeof j.total === 'number') D.counters.water.current = j.total;
+  D.water = D.water || { ml:0, list:[] };
+  D.water.ml = D.counters.water.current;
+  D.water.list = (D.water.list || []).concat([{ ml: ml, at: '' }]);
+  store.save(D);
+  render();
+}
+
+function openFoodDiary(){
+  var m = D.meals || { kcal:0, prot:0, list:[] };
+  var rows = (m.list || []).length
+    ? m.list.map(function(x){
+        return '<div class="dayrow"><span class="dayrow__title">' + x.what +
+          (x.slot ? ' <span class="dayrow__sub">· ' + x.slot + '</span>' : '') + '</span>' +
+          '<span class="dayrow__time">' + x.kcal + '</span></div>';
+      }).join('')
+    : '<div class="muted">Сегодня пока ничего не записано</div>';
+  sheet(
+    '<h3>Еда за сегодня</h3>' +
+    '<div class="muted">' + m.kcal + ' из 1950 ккал · белок ' + m.prot + ' из 95 г</div>' +
+    '<div class="daylist">' + rows + '</div>' +
+    '<label>Что съела</label><input id="fdWhat" placeholder="напр. три сырника" autocomplete="off">' +
+    '<div class="muted" style="margin-top:6px">Калории посчитаю сам. Если знаешь точно — впиши ниже</div>' +
+    '<input id="fdKcal" type="number" inputmode="numeric" placeholder="ккал, если знаешь">' +
+    '<button class="btn" id="fdSave">Записать</button>' +
+    '<button class="btn ghost" id="mClose">Закрыть</button>'
+  );
+  setTimeout(function(){ var f = $('fdWhat'); if (f) f.focus(); }, 60);
+  $('fdSave').onclick = function(){
+    var what = ($('fdWhat').value || '').trim();
+    if (!what) return toast('Напиши, что съела');
+    apiSend('api/food', { what:what, kcal:parseInt($('fdKcal').value, 10) || 0 }, 'Записала',
+      function(j){
+        toast(j.unknown ? 'Калории уточню' : '+' + j.kcal + ' ккал, белок ' + j.prot + ' г');
+        applyFood(what, j);
+      });
+  };
+  $('mClose').onclick = closeSheet;
+}
+
+
+/* Федя: короткий звук на действие. Генерим сам, файл не нужен.
+   Звук включается/выключается в карточке дат, состояние помним. */
+var SOUND_ON = (function(){ try { return localStorage.getItem('myday_sound') !== 'off'; } catch(e){ return true; } })();
+var _actx = null;
+function playPing(kind){
+  if (!SOUND_ON) return;
+  try {
+    _actx = _actx || new (window.AudioContext || window.webkitAudioContext)();
+    if (_actx.state === 'suspended') _actx.resume();
+    var t = _actx.currentTime;
+    var notes = kind === 'error' ? [330, 247] : (kind === 'done' ? [660, 880] : [780]);
+    notes.forEach(function(f, i){
+      var o = _actx.createOscillator(), g = _actx.createGain();
+      o.type = 'sine'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001, t + i * 0.09);
+      g.gain.exponentialRampToValueAtTime(0.18, t + i * 0.09 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, t + i * 0.09 + 0.22);
+      o.connect(g); g.connect(_actx.destination);
+      o.start(t + i * 0.09); o.stop(t + i * 0.09 + 0.24);
+    });
+  } catch(e){}
+}
+function toggleSound(){
+  SOUND_ON = !SOUND_ON;
+  try { localStorage.setItem('myday_sound', SOUND_ON ? 'on' : 'off'); } catch(e){}
+  if (SOUND_ON) playPing('done');
+  toast(SOUND_ON ? 'Звук включён' : 'Звук выключен');
+}
+
+function openPlanCard(){
+  var p = D.counters.plan;
+  var left = (p.goal || 0) - (p.current || 0);
+  var deals = p.goal ? Math.ceil(left / 119900) : 0;
+  sheet(
+    '<h3>План месяца</h3>' +
+    '<div class="muted">' + fmtMoney(p.current) + ' из ' + fmtMoney(p.goal) + ' ₽' +
+      (left > 0 && p.goal ? ' · осталось ' + fmtMoney(left) + ' ₽, это ' + deals + ' ' + plural(deals, 'оплата','оплаты','оплат') : '') + '</div>' +
+    '<label>Сделано</label><input id="pmDone" type="number" inputmode="numeric" value="' + (p.current || 0) + '">' +
+    '<label>Цель месяца</label><input id="pmGoal" type="number" inputmode="numeric" value="' + (p.goal || 0) + '">' +
+    '<button class="btn" id="pmSave">Сохранить</button>' +
+    '<button class="btn ghost" id="mClose">Закрыть</button>'
+  );
+  $('pmSave').onclick = function(){
+    apiSend('api/money', { total:$('pmDone').value, goal:$('pmGoal').value }, 'План обновлён');
+  };
+  $('mClose').onclick = closeSheet;
+}
+
+function openDatesCard(){
+  var goals = D.goals || [];
+  var rows = goals.map(function(g){
+    return '<div class="dayrow"><span class="dayrow__title">' + g.title +
+      (g.note ? ' <span class="dayrow__sub">· ' + g.note + '</span>' : '') + '</span>' +
+      (g.days != null ? '<span class="dayrow__time">' + g.days + ' дн.</span>' : '') + '</div>';
+  }).join('') || '<div class="muted">Целей пока нет</div>';
+  var main = goals.filter(function(g){ return g.date; })[0];
+  sheet(
+    '<h3>Мои даты</h3>' +
+    '<div class="daylist">' + rows + '</div>' +
+    (main ? '<label>' + main.title + ' — дата</label>' +
+            '<input id="gDate" type="date" class="time-inp" value="' + main.date + '">' +
+            '<button class="btn" id="gSave">Сохранить дату</button>' : '') +
+    '<button class="btn lav" id="sndBtn">' + (SOUND_ON ? 'Звук: включён' : 'Звук: выключен') + '</button>' +
+    '<button class="btn ghost" id="mClose">Закрыть</button>'
+  );
+  if ($('sndBtn')) $('sndBtn').onclick = function(){ toggleSound(); closeSheet(); };
+  if ($('gSave')) $('gSave').onclick = function(){
+    apiSend('api/goal', { title:main.title, date:$('gDate').value }, 'Дата обновлена');
+  };
+  $('mClose').onclick = closeSheet;
+}
+
 function openClientCard(id){
   var c = (D.clients || []).filter(function(x){ return x.id === id; })[0]; if (!c) return;
   var today = todayKey();
@@ -854,35 +1267,79 @@ function openClientCard(id){
     '<div class="cli-notes">' + (c.history || '—') + '</div>' +
     '<div class="sheet-sec">С зума</div>' +
     '<div class="cli-notes">' + (c.zoomNotes || '—') + '</div>' +
-    '<div class="row2"><button class="btn lav" id="cWrite">Написать</button><button class="btn" id="cCrm">Открыть CRM</button></div>' +
+    (c.contact
+      ? '<div class="row2"><button class="btn" id="cWrite">Написать</button>' +
+        '<button class="btn' + (c.crmUrl ? '' : ' lav') + '" id="cCrm">Открыть CRM</button></div>'
+      : '<button class="btn' + (c.crmUrl ? '' : ' lav') + '" id="cCrm">Открыть CRM</button>') +
+    '<div class="row2"><button class="btn" id="cDone">Выполнено</button><button class="btn" id="cCancel">Отмена</button></div>' +
+    '<button class="btn" id="cNote">Комментарий</button>' +
     '<button class="btn ghost" id="mClose">Закрыть</button>'
   );
-  $('cWrite').onclick = function(){ contactAction(c); };
-  $('cCrm').onclick = function(){ crmAction(c); };
+  if ($('cWrite')) $('cWrite').onclick = function(){ contactAction(c); };
+  $('cCrm').onclick = function(){
+    if (!c.crmUrl) return toast('Ссылки на карточку нет');
+    crmAction(c);
+  };
+  $('cDone').onclick = function(){ apiSend('api/client', { id:c.id, action:'done' }, 'Отметил, касание отработано'); };
+  $('cCancel').onclick = function(){ askReason(c); };
+  $('cNote').onclick = function(){ askNote('client', c.id, c.name); };
   $('mClose').onclick = closeSheet;
 }
 
+/* Федя: приложение открывается и в телеграме, и иконкой с экрана телефона.
+   Методы телеграма работают только внутри него, поэтому снаружи открываем ссылку сами. */
+function inTelegram(){ return !!(TG && TG.initData); }
+
 function contactAction(c){
-  var h = c.contact || '';
-  if (TG && TG.openTelegramLink && h.charAt(0) === '@') return TG.openTelegramLink('https://t.me/' + h.slice(1));
-  if (TG && TG.openLink) return TG.openLink(h.charAt(0) === '@' ? 'https://t.me/' + h.slice(1) : 'tel:' + h.replace(/[^\d+]/g, ''));
-  toast('Контакт: ' + (h || '—'));
+  var h = (c.contact || '').trim();
+  if (!h) return toast('Контакта нет в базе — открой CRM');
+
+  // из контакта делаем ссылку: ник → телеграм, всё остальное с цифрами → звонок
+  var url, nick = h.match(/@([A-Za-z0-9_]{3,})/);
+  if (nick){
+    url = 'https://t.me/' + nick[1];
+  } else {
+    var digits = h.replace(/[^\d+]/g, '');
+    if (digits.replace(/\D/g, '').length >= 10){
+      url = 'tel:' + digits;
+    } else {
+      return toast('Контакт: ' + h);   // ни ника, ни телефона — просто показываем
+    }
+  }
+
+  if (url.indexOf('tel:') === 0){
+    location.href = url;               // звонок работает везде одинаково
+    return;
+  }
+  if (inTelegram() && TG.openTelegramLink) return TG.openTelegramLink(url);
+  if (inTelegram() && TG.openLink) return TG.openLink(url);
+  window.open(url, '_blank');
 }
-function crmAction(c){ if (TG && TG.openLink && c.crmUrl) TG.openLink(c.crmUrl); else toast('CRM: ' + (c.crmUrl || '—')); }
+function crmAction(c){
+  if (!c.crmUrl) return toast('Ссылки на карточку нет');
+  openUrl(c.crmUrl);
+}
 
 /* ---------- actions ---------- */
 function findTask(id){ return D.tasks.filter(function(t){ return t.id === id; })[0]; }
 
 function toggleDone(id){
   var t = findTask(id); if (!t) return;
-  t.done = !t.done; haptic('light');
+  t.done = !t.done; haptic('light'); playPing(t.done ? 'done' : 'tap');
   store.save(D).then(render);
+  if (t.key){
+    fetch('api/done', { method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ key:t.key, done:t.done, init:(TG && TG.initData) ? TG.initData : '',
+                             key_auth: MY_KEY }) })
+      .catch(function(){ toast('Отметка не сохранилась на сервере'); });
+  }
 }
 
 function deferTask(id){
   var t = findTask(id); if (!t || t.done) return;
-  t.day = tomorrowKey(); haptic('medium');
-  store.save(D).then(function(){ render(); toast('Перенесено на завтра · ' + t.time); });
+  haptic('medium');
+  apiSend('api/move', { gid:t.gid, day:tomorrowKey(), time:t.time || '' },
+          'Перенесено на завтра · ' + t.time);
 }
 
 function openTask(id){
@@ -892,11 +1349,17 @@ function openTask(id){
   sheet(
     '<h3>' + t.title + '</h3>' +
     '<div class="muted">' + t.time + (t.subtitle ? ' · ' + t.subtitle : '') + '</div>' +
-    (t.note ? '<div class="cli-notes">' + t.note + '</div>' : '') +
+    (t.comment ? '<div class="sheet-sec">Комментарий</div><div class="cli-notes">' + t.comment + '</div>' : '') +
+    (isLink(t.note) ? '<button class="btn" id="mLink">Открыть карточку</button>'
+                    : (t.note ? '<div class="cli-notes">' + t.note + '</div>' : '')) +
     '<button class="btn ' + (t.done ? 'lav' : '') + '" id="mDone">' + (t.done ? 'Снять отметку' : 'Отметить выполненным') + '</button>' +
+    '<div class="row2"><button class="btn" id="mMove">Изменить</button><button class="btn" id="mNote">Комментарий</button></div>' +
     '<button class="btn ghost" id="mClose">Закрыть</button>'
   );
+  if ($('mLink')) $('mLink').onclick = function(){ openUrl(t.note); };
   $('mDone').onclick = function(){ toggleDone(id); closeSheet(); };
+  $('mMove').onclick = function(){ askMove(t); };
+  $('mNote').onclick = function(){ askNote('task', t.key || t.id, t.title); };
   $('mClose').onclick = closeSheet;
 }
 
@@ -906,13 +1369,18 @@ function openClient(t){
   sheet(
     '<h3>' + c.name + '</h3>' +
     '<div class="muted">' + (t.time || '') + (t.subtitle ? ' · ' + t.subtitle : '') + '</div>' +
-    (t.note ? '<div class="cli-notes">' + t.note + '</div>' : '') +
-    (t.contact ? '<div class="row2"><button class="btn lav" id="cWrite">Написать</button></div>' : '') +
+    (isLink(t.note) ? '<button class="btn" id="cLink">Открыть карточку</button>'
+                    : (t.note ? '<div class="cli-notes">' + t.note + '</div>' : '')) +
+    (t.contact ? '<button class="btn" id="cWrite">Написать</button>' : '') +
     '<button class="btn ' + (t.done ? 'lav' : '') + '" id="mDone">' + (t.done ? 'Снять отметку' : 'Отметить выполненным') + '</button>' +
+    '<div class="row2"><button class="btn" id="cMove">Изменить</button><button class="btn" id="cNote2">Комментарий</button></div>' +
     '<button class="btn ghost" id="mClose">Закрыть</button>'
   );
+  if ($('cLink')) $('cLink').onclick = function(){ openUrl(t.note); };
   if ($('cWrite')) $('cWrite').onclick = function(){ contactAction(c); };
   $('mDone').onclick = function(){ toggleDone(t.id); closeSheet(); };
+  $('cMove').onclick = function(){ askMove(t); };
+  $('cNote2').onclick = function(){ askNote('task', t.key || t.id, t.title); };
   $('mClose').onclick = closeSheet;
 }
 
@@ -928,10 +1396,9 @@ function openFood(t){
   $('fSave').onclick = function(){
     var what = $('fWhat').value.trim();
     var kcal = parseInt($('fKcal').value, 10) || 0;
-    D.counters.food.current += kcal;
-    if (what) t.subtitle = what + (kcal ? ' · ' + kcal + ' ккал' : '');
-    t.done = true; haptic('light');
-    store.save(D).then(function(){ render(); closeSheet(); toast('Записано: +' + kcal + ' ккал'); });
+    if (!what && !kcal) return toast('Впиши, что съела');
+    apiSend('api/food', { what:what, kcal:kcal, slot:t.title }, 'Записано',
+            function(j){ applyFood(what, j); });
   };
   $('mClose').onclick = closeSheet;
 }
@@ -987,21 +1454,13 @@ function openSchedule(){
     $('sSave').onclick = function(){
       capture();
       var name = pick.name.trim(), contact = pick.contact.trim();
-      if (!pick.time){ toast('Выбери время'); return; }
+      var day = ($('sDate') && $('sDate').value) || pick.day;
+      var time = ($('sTime') && $('sTime').value) || pick.time || '';
+      if (!time){ toast('Выбери время'); return; }
       if (!name){ toast('Впиши имя'); return; }
-      D.tasks.push({
-        id: 'm' + Date.now(), time: pick.time, type: 'clients',
-        title: 'Zoom с ' + name, subtitle: contact, contact: contact,
-        amount: null, note: '', done: false, day: pick.day
-      });
-      haptic('medium');
-      store.save(D).then(function(){
-        render();
-        if ($('screen-week').classList.contains('active')) renderWeek();
-        if ($('screen-calendar').classList.contains('active')) renderCalendar();
-        closeSheet();
-        toast('Встреча ' + humanDay(pick.day) + ' в ' + pick.time);
-      });
+      apiSend('api/task', { day:day, time:time, type:'clients',
+                            title:name + ' — зум', contact:contact },
+              'Встреча ' + humanDay(day) + ' в ' + time, addTaskLocally);
     };
   }
   draw();
@@ -1047,18 +1506,10 @@ function openAddTask(){
   $('adSave').onclick = function(){
     var title = $('adTitle').value.trim();
     if (!title){ toast('Впиши название'); return; }
-    D.tasks.push({
-      id: 'x' + Date.now(), day: pick.day, time: $('adTime').value || '',
-      type: pick.type, title: title, subtitle: '', contact: null, amount: null, note: '', done: false
-    });
-    haptic('medium');
-    store.save(D).then(function(){
-      render();
-      if ($('screen-week').classList.contains('active')) renderWeek();
-      if ($('screen-calendar').classList.contains('active')) renderCalendar();
-      closeSheet();
-      toast(pick.day === todayKey() ? 'Добавлено' : 'Добавлено на ' + humanDay(pick.day));
-    });
+    var addDay = ($('adDate') && $('adDate').value) || pick.day;
+    apiSend('api/task', { day:addDay, time:($('adTime') && $('adTime').value) || '',
+                          type:pick.type, title:title },
+            addDay === todayKey() ? 'Добавлено' : 'Добавлено на ' + humanDay(addDay), addTaskLocally);
   };
 }
 
@@ -1079,6 +1530,12 @@ function attachLongPress(node, cb){
 /* ---------- sheet ---------- */
 function sheet(html){ haptic('light'); $('sheet').innerHTML = html; $('overlay').classList.add('open'); }
 function closeSheet(){ $('overlay').classList.remove('open'); }
+document.querySelectorAll('#daySwitch .daysw__b').forEach(function(b){
+  b.addEventListener('click', function(){
+    viewDay = b.dataset.view; haptic('light'); render();
+  });
+});
+
 $('overlay').addEventListener('click', function(e){ if (e.target === this) closeSheet(); });
 
 /* ---------- nav ---------- */
